@@ -2,7 +2,7 @@ extends Node3D
 
 var target_angle: float = 0.0
 var max_up_angle: float = 90.0 # Cocked back (pointing up)
-var min_down_angle: float = -45.0 # Swung forward/down
+var min_down_angle: float = -80.0 # Swung forward/down
 var step: float = 35.0
 var swing_speed: float = 20.0
 
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	if not visible:
 		return
 		
-	# Smoothly rotate around the local X axis
-	var current_angle = rad_to_deg(handle_pivot.rotation.x)
+	# Smoothly rotate around the local Y axis
+	var current_angle = rad_to_deg(handle_pivot.rotation.y)
 	var next_angle = lerp(current_angle, target_angle, swing_speed * delta)
-	handle_pivot.rotation.x = deg_to_rad(next_angle)
+	handle_pivot.rotation.y = deg_to_rad(next_angle)
