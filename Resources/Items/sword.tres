@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://e52fc66dn8us" path="res://icon.svg" id="1_icon"]
+[ext_resource type="Script" uid="uid://dvl1b1h316jlk" path="res://Scripts/ItemData.gd" id="2_item"]
+
+[resource]
+script = ExtResource("2_item")
+item_name = "Sword"
+description = "A sharp blade to fend off the darkness."
+icon = ExtResource("1_icon")

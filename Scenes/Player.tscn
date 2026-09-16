@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://dutcdtdc0ygky"]
+
+[ext_resource type="Texture2D" uid="uid://e52fc66dn8us" path="res://icon.svg" id="1_icon"]
+[ext_resource type="Script" uid="uid://clujd6574w3m8" path="res://Scripts/PlayerMovement.gd" id="2_w2um5"]
+[ext_resource type="Script" uid="uid://bv0n3oqaykpet" path="res://Scripts/CameraMovement.gd" id="3_ub28p"]
+[ext_resource type="Script" uid="uid://b7xcq0g4f1bdc" path="res://Scripts/InventoryUI.gd" id="4_invUI"]
+[ext_resource type="PackedScene" uid="uid://dsjkw3214swo" path="res://Scenes/Sword.tscn" id="5_sword"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_djl6f"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_wimv6"]
+size = Vector3(0.25, 0.25, 0.1)
+
+[node name="Player" type="Node3D" unique_id=1388304144]
+
+[node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=1113074839]
+top_level = true
+script = ExtResource("2_w2um5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody" unique_id=1563728224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3rsb5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerBody" unique_id=340705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_djl6f")
+
+[node name="Arrow" type="Node3D" parent="PlayerBody" unique_id=801353848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PlayerBody/Arrow" unique_id=1466345846]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, -0.85)
+mesh = SubResource("PrismMesh_wimv6")
+skeleton = NodePath("../..")
+
+[node name="Sword" parent="PlayerBody" unique_id=1119683844 instance=ExtResource("5_sword")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.2, -0.5)
+visible = false
+
+[node name="LighterLight" type="OmniLight3D" parent="PlayerBody" unique_id=2139376887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.5)
+light_color = Color(0.95, 0.65, 0.2, 1)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=874499834]
+
+[node name="PhoneUI" type="TextureRect" parent="UI" unique_id=338277180]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -150.0
+offset_right = -22.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_icon")
+expand_mode = 1
+
+[node name="CompanionSubtitle" type="Label" parent="UI" unique_id=218645961]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -140.0
+offset_right = -170.0
+offset_bottom = -90.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Keep that lighter on..."
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="InventoryUI" type="HBoxContainer" parent="UI" unique_id=538595227]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -70.0
+offset_right = -170.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 2
+script = ExtResource("4_invUI")
+
+[node name="Slot1" type="ColorRect" parent="UI/InventoryUI" unique_id=1280129116]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.1, 0.1, 0.1, 0.8)
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryUI/Slot1" unique_id=239206353]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="ColorRect" parent="UI/InventoryUI" unique_id=207076131]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.1, 0.1, 0.1, 0.8)
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryUI/Slot2" unique_id=142660840]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="ColorRect" parent="UI/InventoryUI" unique_id=199958485]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.1, 0.1, 0.1, 0.8)
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryUI/Slot3" unique_id=1507927649]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="ColorRect" parent="UI/InventoryUI" unique_id=1158301417]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.1, 0.1, 0.1, 0.8)
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryUI/Slot4" unique_id=974450075]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot5" type="ColorRect" parent="UI/InventoryUI" unique_id=622200984]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0.1, 0.1, 0.1, 0.8)
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryUI/Slot5" unique_id=1761574173]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CamOrigin" type="Node3D" parent="." unique_id=1208336307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("3_ub28p")
+
+[node name="h" type="Node3D" parent="CamOrigin" unique_id=731402711]
+
+[node name="v" type="Node3D" parent="CamOrigin/h" unique_id=365458453]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin/h/v" unique_id=1511460594]
+spring_length = 4.0
+margin = 0.5
+
+[node name="Camera" type="Camera3D" parent="CamOrigin/h/v/SpringArm3D" unique_id=192415602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.013)
+fov = 80.0

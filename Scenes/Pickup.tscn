@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c6y78pickup3d"]
+
+[ext_resource type="Script" uid="uid://dho33soe23oa4" path="res://Scripts/Pickup.gd" id="1_pickup"]
+[ext_resource type="Texture2D" uid="uid://e52fc66dn8us" path="res://icon.svg" id="2_icon"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pickup"]
+radius = 0.8
+
+[node name="Pickup" type="Area3D" unique_id=1247584474]
+script = ExtResource("1_pickup")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1392690270]
+shape = SubResource("SphereShape3D_pickup")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2062567565]
+billboard = 2
+texture = ExtResource("2_icon")

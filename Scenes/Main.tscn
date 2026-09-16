@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cdr638r16jpev"]
+
+[ext_resource type="PackedScene" uid="uid://dutcdtdc0ygky" path="res://Scenes/Player.tscn" id="1_3sqs3"]
+[ext_resource type="PackedScene" uid="uid://c6y78pickup3d" path="res://Scenes/Pickup.tscn" id="2_kln2b"]
+[ext_resource type="Resource" path="res://Resources/Items/sword.tres" id="3_rgh2o"]
+[ext_resource type="Resource" path="res://Resources/Items/lighter.tres" id="4_pbw6q"]
+
+[sub_resource type="Environment" id="Environment_o4pcw"]
+background_mode = 1
+background_energy_multiplier = 2.0
+ambient_light_source = 1
+
+[node name="main" type="Node3D" unique_id=805437725]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=799127613]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.4
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1863170411]
+environment = SubResource("Environment_o4pcw")
+
+[node name="Player" parent="." unique_id=905776750 instance=ExtResource("1_3sqs3")]
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1340034602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+size = Vector3(25, 2, 25)
+
+[node name="AroundTheMaxStepHeight" type="CSGBox3D" parent="." unique_id=1951291452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.0471916, 8)
+use_collision = true
+size = Vector3(5, 0.1, 5)
+
+[node name="RandomBox" type="CSGBox3D" parent="." unique_id=1639254429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50055, 0.969055, -6.49117)
+use_collision = true
+size = Vector3(4, 2, 6)
+
+[node name="Slope1" type="CSGBox3D" parent="." unique_id=6052706]
+transform = Transform3D(0.100674, 0.994919, 0, -0.994919, 0.100674, 0, 0, 0, 1, 7.67617, -0.10535, 9.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Slope2" type="CSGBox3D" parent="." unique_id=1980912655]
+transform = Transform3D(0.320415, 0.947277, 0, -0.947277, 0.320415, 0, 0, 0, 1, 7.67617, 0.797281, 5.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Slope3" type="CSGBox3D" parent="." unique_id=945604224]
+transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, 7.42761, 1.52647, 1.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Slope4" type="CSGBox3D" parent="." unique_id=1561607795]
+transform = Transform3D(0.707107, 0.707106, 0, -0.707106, 0.707107, 0, 0, 0, 1, 5.99874, 1.52647, -2.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Slope5" type="CSGBox3D" parent="." unique_id=639850216]
+transform = Transform3D(0.920368, 0.391052, 0, -0.391052, 0.920368, 0, 0, 0, 1, 4.94308, 1.52647, -6.5)
+use_collision = true
+size = Vector3(1, 7.90088, 4)
+
+[node name="Wall1" type="CSGBox3D" parent="." unique_id=2133301825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 12)
+use_collision = true
+size = Vector3(25, 4, 1)
+
+[node name="Wall2" type="CSGBox3D" parent="." unique_id=1211817961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -12)
+use_collision = true
+size = Vector3(25, 4, 1)
+
+[node name="Wall3" type="CSGBox3D" parent="." unique_id=671082740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 0)
+use_collision = true
+size = Vector3(1, 4, 23)
+
+[node name="Wall4" type="CSGBox3D" parent="." unique_id=44182919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 0)
+use_collision = true
+size = Vector3(1, 4, 23)
+
+[node name="Pickup" parent="." unique_id=835508992 instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8787193, 0.6400002, 1.8513318)
+item_data = ExtResource("3_rgh2o")
+
+[node name="Pickup2" parent="." unique_id=673997921 instance=ExtResource("2_kln2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8787193, 0.6400002, -7.1486683)
+item_data = ExtResource("4_pbw6q")
