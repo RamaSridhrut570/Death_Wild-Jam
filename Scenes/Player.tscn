@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://bv0n3oqaykpet" path="res://Scripts/CameraMovement.gd" id="3_ub28p"]
 [ext_resource type="Script" uid="uid://b7xcq0g4f1bdc" path="res://Scripts/InventoryUI.gd" id="4_invUI"]
 [ext_resource type="PackedScene" uid="uid://dsjkw3214swo" path="res://Scenes/Sword.tscn" id="5_sword"]
+[ext_resource type="PackedScene" uid="uid://cy88j24guntsc" path="res://Scenes/Gun.tscn" id="6_gun"]
+[ext_resource type="PackedScene" uid="uid://cy88j25flashl" path="res://Scenes/Flashlight.tscn" id="7_flashlight"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3rsb5"]
 
@@ -35,16 +37,17 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5
 mesh = SubResource("PrismMesh_wimv6")
 skeleton = NodePath("../..")
 
-[node name="Sword" parent="PlayerBody" unique_id=1119683844 instance=ExtResource("5_sword")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.2, -0.5)
+[node name="Sword" parent="." unique_id=1119683844 instance=ExtResource("5_sword")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 
-[node name="LighterLight" type="OmniLight3D" parent="PlayerBody" unique_id=2139376887]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.5)
-light_color = Color(0.95, 0.65, 0.2, 1)
-light_energy = 8.0
-shadow_enabled = true
-omni_range = 8.0
+[node name="Gun" parent="." unique_id=-2061521730 instance=ExtResource("6_gun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+
+[node name="Flashlight" parent="." unique_id=2139376887 instance=ExtResource("7_flashlight")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=874499834]
 
@@ -180,9 +183,9 @@ script = ExtResource("3_ub28p")
 [node name="v" type="Node3D" parent="CamOrigin/h" unique_id=365458453]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin/h/v" unique_id=1511460594]
-spring_length = 4.0
+spring_length = 3.0
 margin = 0.5
 
 [node name="Camera" type="Camera3D" parent="CamOrigin/h/v/SpringArm3D" unique_id=192415602]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.013)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 fov = 80.0

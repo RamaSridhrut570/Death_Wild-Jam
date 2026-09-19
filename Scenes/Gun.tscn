@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy88j24guntsc"]
+
+[ext_resource type="Script" path="res://Scripts/Gun.gd" id="1_scr"]
+[ext_resource type="PackedScene" uid="uid://cy88j23bullet" path="res://Scenes/Bullet.tscn" id="2_bullet"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(0.1, 0.15, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_barrel"]
+size = Vector3(0.05, 0.05, 0.4)
+
+[node name="Gun" type="Node3D"]
+script = ExtResource("1_scr")
+bullet_scene = ExtResource("2_bullet")
+
+[node name="ModelPivot" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="ModelPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, -0.6)
+mesh = SubResource("BoxMesh_body")
+
+[node name="BarrelMesh" type="MeshInstance3D" parent="ModelPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.95)
+mesh = SubResource("BoxMesh_barrel")
+
+[node name="Muzzle" type="Node3D" parent="ModelPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2)

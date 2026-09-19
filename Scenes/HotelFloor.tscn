@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://dad3ac8c21"]
+
+[ext_resource type="PackedScene" uid="uid://dutcdtdc0ygky" path="res://Scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://c6y78pickup3d" path="res://Scenes/Pickup.tscn" id="2_pickup"]
+[ext_resource type="Resource" path="res://Resources/Items/sword.tres" id="3_sword"]
+[ext_resource type="Resource" path="res://Resources/Items/flashlight.tres" id="4_flashlight"]
+[ext_resource type="Resource" path="res://Resources/Items/gun.tres" id="5_gun"]
+
+[sub_resource type="Environment" id="Environment_black"]
+background_mode = 1
+background_color = Color(0.2, 0.2, 0.2, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.05, 0.05, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.15, 0.12, 0.12, 1)
+
+[node name="HotelFloor" type="Node3D" unique_id=102664370]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=307535439]
+environment = SubResource("Environment_black")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531158776]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.52906674, 0.5290667, 0.5290667, 1)
+shadow_enabled = true
+
+[node name="Architecture" type="Node3D" parent="." unique_id=346928567]
+
+[node name="Floor" type="CSGBox3D" parent="Architecture" unique_id=2117960368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(40, 1, 60)
+material = SubResource("StandardMaterial3D_floor")
+
+[node name="Ceiling" type="CSGBox3D" parent="Architecture" unique_id=467131385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+use_collision = true
+size = Vector3(40, 1, 60)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Walls" type="CSGCombiner3D" parent="Architecture" unique_id=135443253]
+use_collision = true
+
+[node name="SolidBlock" type="CSGBox3D" parent="Architecture/Walls" unique_id=1759596748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+size = Vector3(38, 3, 58)
+
+[node name="MainHallway" type="CSGBox3D" parent="Architecture/Walls" unique_id=1312905292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+operation = 2
+size = Vector3(4, 3, 50)
+
+[node name="ElevatorLobby" type="CSGBox3D" parent="Architecture/Walls" unique_id=2117333659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 20)
+operation = 2
+size = Vector3(12, 3, 8)
+
+[node name="Room1" type="CSGBox3D" parent="Architecture/Walls" unique_id=1800959036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 10)
+operation = 2
+size = Vector3(8, 3, 8)
+
+[node name="Doorway1" type="CSGBox3D" parent="Architecture/Walls" unique_id=130278167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 10)
+operation = 2
+size = Vector3(1, 2, 2)
+
+[node name="Room2" type="CSGBox3D" parent="Architecture/Walls" unique_id=1239616551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 10)
+operation = 2
+size = Vector3(8, 3, 8)
+
+[node name="Doorway2" type="CSGBox3D" parent="Architecture/Walls" unique_id=803675403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 10)
+operation = 2
+size = Vector3(1, 2, 2)
+
+[node name="Room3" type="CSGBox3D" parent="Architecture/Walls" unique_id=1962095091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 0)
+operation = 2
+size = Vector3(8, 3, 8)
+
+[node name="Doorway3" type="CSGBox3D" parent="Architecture/Walls" unique_id=1261452524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+operation = 2
+size = Vector3(1, 2, 2)
+
+[node name="Room4" type="CSGBox3D" parent="Architecture/Walls" unique_id=1482890931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 0)
+operation = 2
+size = Vector3(8, 3, 8)
+
+[node name="Doorway4" type="CSGBox3D" parent="Architecture/Walls" unique_id=290510420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+operation = 2
+size = Vector3(1, 2, 2)
+
+[node name="Room5" type="CSGBox3D" parent="Architecture/Walls" unique_id=81633619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, -10)
+operation = 2
+size = Vector3(8, 3, 8)
+
+[node name="Doorway5" type="CSGBox3D" parent="Architecture/Walls" unique_id=66161199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -10)
+operation = 2
+size = Vector3(1, 2, 2)
+
+[node name="Room6" type="CSGBox3D" parent="Architecture/Walls" unique_id=1954227372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, -10)
+operation = 2
+size = Vector3(8, 3, 8)
+
+[node name="Doorway6" type="CSGBox3D" parent="Architecture/Walls" unique_id=947028595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -10)
+operation = 2
+size = Vector3(1, 2, 2)
+
+[node name="Player" parent="." unique_id=889451348 instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 22)
+
+[node name="Pickups" type="Node3D" parent="." unique_id=1267003112]
+
+[node name="Pickup_Flashlight" parent="Pickups" unique_id=995958983 instance=ExtResource("2_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 18)
+item_data = ExtResource("4_flashlight")
+
+[node name="Pickup_Sword" parent="Pickups" unique_id=1100392585 instance=ExtResource("2_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 18)
+item_data = ExtResource("3_sword")
+
+[node name="Pickup_Gun" parent="Pickups" unique_id=539998623 instance=ExtResource("2_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 18)
+item_data = ExtResource("5_gun")

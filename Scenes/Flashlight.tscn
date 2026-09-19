@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cy88j25flashl"]
+
+[ext_resource type="Script" path="res://Scripts/Flashlight.gd" id="1_scr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fl"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.3
+
+[node name="Flashlight" type="Node3D"]
+script = ExtResource("1_scr")
+
+[node name="ModelPivot" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="ModelPivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.6)
+mesh = SubResource("CylinderMesh_fl")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="ModelPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+light_color = Color(0.9, 0.9, 1, 1)
+light_energy = 5.0
+spot_range = 20.0
+spot_angle = 35.0

@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("2_item")
-item_name = "Lighter"
-description = "Keep it lit. Keep the doom at bay."
+item_name = "Flashlight"
+description = "A standard flashlight. Use scroll wheel to rotate it."
 icon = ExtResource("1_icon")

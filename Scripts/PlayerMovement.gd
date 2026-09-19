@@ -12,14 +12,11 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 # Parent reference
 var parent: Node3D
 
-@export_group("Lighter")
-@export var lighter_drain_rate: float = 0.1
-@export var lighter_boost_amount: float = 0.2
-var lighter_strength: float = 1.0
 var is_dead: bool = false
 
-@onready var lighter: OmniLight3D = $LighterLight
-@onready var sword: Node3D = $Sword
+@onready var flashlight: Node3D = $"../Flashlight"
+@onready var sword: Node3D = $"../Sword"
+@onready var gun: Node3D = $"../Gun"
 @onready var inventory_ui: Control = $"../UI/InventoryUI"
 
 @export_group("Jump")
@@ -69,9 +66,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Jump input
 	
 	# Lighter boost input
-	var active_item = inventory_ui.get_selected_item_name()
-	if active_item == "Lighter" and Input.is_action_just_pressed("scroll_down") and not is_dead:
-		lighter_strength = min(lighter_strength + lighter_boost_amount, 1.0)
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_dead:
 		velocity.y = jump_velocity
 
@@ -82,21 +76,15 @@ func _process(delta: float) -> void:
 	
 	var active_item = inventory_ui.get_selected_item_name()
 	
-	if not is_dead:
-		if active_item == "Lighter" and lighter_strength > 0.0:
-			lighter_strength -= lighter_drain_rate * delta
-			if lighter_strength <= 0.0:
-				lighter_strength = 0.0
-				is_dead = true
-				print("The Darkness Consumed You")
 	
 	if sword:
 		sword.visible = (active_item == "Sword") and not is_dead
 		
-	if lighter:
-		lighter.visible = (active_item == "Lighter") and not is_dead
-		if lighter.visible:
-			lighter.light_energy = lighter_strength * 2.0
+	if gun:
+		gun.visible = (active_item == "Gun") and not is_dead
+		
+	if flashlight:
+		flashlight.visible = (active_item == "Flashlight") and not is_dead
 
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)

@@ -19,7 +19,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Scroll front -> swing sword forward (down)
 		target_angle -= step
 		
-	target_angle = clamp(target_angle, min_down_angle, max_up_angle)
+
 
 func _process(delta: float) -> void:
 	if not visible:
