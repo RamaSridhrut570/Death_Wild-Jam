@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dutcdtdc0ygky"]
 
+[ext_resource type="Script" uid="uid://c1hk1lr1cgf1w" path="res://Scenes/player.gd" id="1_bhhdu"]
 [ext_resource type="Texture2D" uid="uid://e52fc66dn8us" path="res://icon.svg" id="1_icon"]
 [ext_resource type="Script" uid="uid://clujd6574w3m8" path="res://Scripts/PlayerMovement.gd" id="2_w2um5"]
 [ext_resource type="Script" uid="uid://bv0n3oqaykpet" path="res://Scripts/CameraMovement.gd" id="3_ub28p"]
@@ -16,6 +17,7 @@
 size = Vector3(0.25, 0.25, 0.1)
 
 [node name="Player" type="Node3D" unique_id=1388304144]
+script = ExtResource("1_bhhdu")
 
 [node name="PlayerBody" type="CharacterBody3D" parent="." unique_id=1113074839]
 top_level = true
@@ -34,6 +36,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="PlayerBody/Arrow" unique_id=1466345846]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, -0.85)
+visible = false
 mesh = SubResource("PrismMesh_wimv6")
 skeleton = NodePath("../..")
 
@@ -183,9 +186,8 @@ script = ExtResource("3_ub28p")
 [node name="v" type="Node3D" parent="CamOrigin/h" unique_id=365458453]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin/h/v" unique_id=1511460594]
-spring_length = 3.0
-margin = 0.5
+spring_length = 0.0
 
 [node name="Camera" type="Camera3D" parent="CamOrigin/h/v/SpringArm3D" unique_id=192415602]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.30179286)
 fov = 80.0

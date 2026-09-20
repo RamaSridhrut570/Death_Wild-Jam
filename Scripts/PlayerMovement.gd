@@ -98,14 +98,16 @@ func _physics_process(delta: float) -> void:
 	# depending on the camera rotation
 	var direction := (cam_h.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	var target_angle := cam_h.rotation.y
+	
+	rotation.y = lerp_angle(rotation.y, target_angle, turn_speed * delta)
 	if direction.length() > 0.0:
 		# Player movement
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 		
 		# Change player model rotation (smooth rotation)
-		var target_angle := atan2(-direction.x, -direction.z)
-		rotation.y = lerp_angle(rotation.y, target_angle, turn_speed * delta)
+		
 	else:
 		# If no direction input, decelerate the player
 		velocity.x = move_toward(velocity.x, 0.0, speed)
